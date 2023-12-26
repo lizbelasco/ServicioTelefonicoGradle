@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://soa.com">
+	<xs:element name="crearReporteRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="noTelefonico">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9]{10}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="crearReporteResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cliente">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nombre" type="xs:string"/>
+							<xs:element name="apellidoPaterno" type="xs:string"/>
+							<xs:element name="apellidoMaterno" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="servicio" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nombre" type="xs:string"/>
+							<xs:element name="tarifa" type="xs:double"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="llamadas">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="llamada" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="noTelefonico" type="xs:string"/>
+										<xs:element name="fecha" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
